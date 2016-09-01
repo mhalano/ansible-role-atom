@@ -1,0 +1,30 @@
+---
+# tasks file for atom
+
+# No 32-bit versions for now
+# DEB 64-bit: https://atom.io/download/deb
+# RPM 64-bit: https://atom.io/download/deb
+
+- name: download and install atom
+  apt:
+    deb: https://atom.io/download/deb
+  when: >
+    ansible_distribution == 'Debian' or
+    ansible_distribution == 'Ubuntu'
+
+- name: download and install atom
+  yum:
+    name: https://atom.io/download/rpm
+  when: >
+    ansible_distribution == 'CentOS' or
+    ansible_distribution == 'EL' or
+    ansible_distribution == 'Fedora' or
+    ansible_distribution == 'opensuse' or
+    ansible_distribution == 'RedHat' or
+    ansible_distribution == 'SLES'
+
+- name: add webupd8 atom repo
+  apt_repository:
+    repo: ppa:webupd8team/atom
+    filename: atom
+  when: repo == True

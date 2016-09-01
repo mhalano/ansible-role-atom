@@ -1,0 +1,5 @@
+---
+# defaults file for atom
+
+# set if webupd8 atom repo should be added
+repo: True
